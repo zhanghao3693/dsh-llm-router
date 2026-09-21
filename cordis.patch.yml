@@ -1,0 +1,19 @@
+# dsh-llm-router profile patch layer
+#
+# 这个文件是「命令安装能否生效」的关键：`dsh plugin add` 只有在包的 package.json
+# 声明了 `dsh.bundle.patch` 时，才会把本插件并入 profile 的 layer 栈；
+# 否则它只被当成一个普通依赖装进去，**进程不会加载它**，用户会看到「装成功但没反应」。
+#
+# id 必须与 host 入口里的插件名一致（lib/index.js 中 `export const name = "llm-router"`）。
+# name 是 npm 包名，dsh 由它解析出 host 入口（main）。
+#
+# 这里刻意**不写 config** —— 后端配置必须由使用者按自己的 provider 设置。
+# 请在你的 profile patch 层用 id 定向覆盖：
+#   - id: llm-router
+#     config:
+#       defaultBackend: { provider: <你的 provider>, model: <模型名> }
+#       ...
+# 详见 README「安装后必须做的事」。
+- insert:
+    - id: llm-router
+      name: 'dsh-llm-router'
