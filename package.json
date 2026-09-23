@@ -3,6 +3,26 @@
   "version": "0.1.0",
   "description": "Task-aware automatic model router (auto route) for the DeepSeek Harness: picks a backend model per request (vision / long-context / default) and falls back across configured models on clean pre-content failures.",
   "type": "module",
+  "author": "zhanghao3693",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhanghao3693/dsh-llm-router.git"
+  },
+  "homepage": "https://github.com/zhanghao3693/dsh-llm-router",
+  "bugs": {
+    "url": "https://github.com/zhanghao3693/dsh-llm-router/issues"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "cordis",
+    "plugin",
+    "llm-router",
+    "model-routing",
+    "auto-route",
+    "fallback"
+  ],
   "main": "lib/index.js",
   "exports": {
     ".": "./lib/index.js"
@@ -24,6 +44,12 @@
   "license": "MIT",
   "peerDependencies": {
     "@deepseek-ai/cordis": "*",
+    "@deepseek-ai/dsh": ">=0.1.0-rc.5",
     "@deepseek-ai/dsh-llm": "*"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/dsh": {
+      "optional": true
+    }
   }
 }
